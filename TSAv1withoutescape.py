@@ -105,7 +105,7 @@ while FES<=MAX_FES:
             if np.array_equal(Best_agent, X):
                 X = Best_agent + step*(np.tan(teta))*(np.random.rand()*(Best_agent-X))
             else:
-                if np.random.rand() <= 1:
+                if np.random.rand() <= 0.7:
                     X = Best_agent + step*(np.tan(teta))*(Best_agent-X)
                 else: # for deep intesification search
                     f1 = -1+(1-(-1))*np.random.rand()
@@ -116,7 +116,7 @@ while FES<=MAX_FES:
             ind=np.asarray((np.where(np.random.rand(dim)<=0.2))).flatten()
             ind=np.append(ind,id) 
             Xnew[ind]=X[ind]                                        
-            Xnew = X
+            #Xnew = X   # no exchange
             
             Xnew[Xnew>ub]=np.random.rand()*(ub - lb) + lb
             Xnew[Xnew<lb]=np.random.rand()*(ub - lb) + lb
